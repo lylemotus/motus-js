@@ -473,11 +473,13 @@ MotusTracker.prototype = {
                     var location = tracker.clubos.clubIDs[i].location.toLowerCase()
                     var currentLocation = tracker.clubos.location.replace(/[^a-zA-Z0-9]/g, ' ').toLowerCase()
                     console.log(tracker.clubos.clubIDs[i])
-                    if (location == currentLocation) {
+
+                    if (location == currentLocation || location.indexOf(currentLocation)) {
                         clubLocationID = tracker.clubos.clubIDs[i].id
                         console.log(clubLocationID)
                         break
                     }
+
                 }
 
                 if (clubLocationID) {
