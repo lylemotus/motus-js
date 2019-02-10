@@ -468,14 +468,15 @@ MotusTracker.prototype = {
                 var xhr = new XMLHttpRequest()
                 var clubLocationID = false
                 for (i = 0; tracker.clubos.clubIDs.length > i; i++) {
-                    clubos_id = tracker.clubos.clubIDs[i]
-
-                    if (clubos_id.location == tracker.clubos.location) {
+                    var clubos_id = tracker.clubos.clubIDs[i]
+                    var location = clubos_id.location.replace(/[^a-zA-Z0-9]/g, ' ')
+                    
+                    if (location == tracker.clubos.location) {
                         clubLocationID = clubos_id.id
                         break
                     }
 
-                    if (clubos_id.location.toLowerCase() == tracker.clubos.location.toLowerCase()) {
+                    if (location.toLowerCase() == tracker.clubos.location.toLowerCase()) {
                         clubLocationID = clubos_id.id
                         break
                     }
