@@ -191,10 +191,10 @@ MotusTracker.prototype = {
         }
 
         // Set location for clubos if it's present in the document.pathname
-        if (document.location.pathname.indexOf('location') && typeof(tracker.clubos) == 'object') {
-            var pathnames = document.location.pathname.split('/')
-            tracker.clubos.location = pathnames[pathnames.length - 1]
-        }
+        // if (document.location.pathname.indexOf('location') && typeof(tracker.clubos) == 'object') {
+        //     var pathnames = document.location.pathname.split('/')
+        //     tracker.clubos.location = pathnames[pathnames.length - 1]
+        // }
 
         tracker.web = {
             origin   : window.location.origin,
