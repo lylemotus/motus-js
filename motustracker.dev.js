@@ -469,7 +469,7 @@ MotusTracker.prototype = {
             if (typeof(tracker.clubos) == 'object' && tracker.clubos.location) {
                 var xhr = new XMLHttpRequest()
                 var clubLocationID = false
-                for (i = 0; tracker.clubos.clubIDs.length < i; i++) {
+                for (i = 0; i < tracker.clubos.clubIDs.length ; i++) {
                     var clubos_id = tracker.clubos.clubIDs[i]
                     var location = clubos_id.location.toLowerCase()
                     var currentLocation = tracker.clubos.location.replace(/[^a-zA-Z0-9]/g, ' ').toLowerCase()
