@@ -470,12 +470,12 @@ MotusTracker.prototype = {
                 var xhr = new XMLHttpRequest()
                 var clubLocationID = false
                 for (i = 0; i < tracker.clubos.clubIDs.length ; i++) {
-                    var clubos_id = tracker.clubos.clubIDs[i]
-                    var location = clubos_id.location.toLowerCase()
+                    var location = tracker.clubos.clubIDs[i].location.toLowerCase()
                     var currentLocation = tracker.clubos.location.replace(/[^a-zA-Z0-9]/g, ' ').toLowerCase()
-
+                    console.log(tracker.clubos.clubIDs[i])
                     if (location == currentLocation) {
-                        clubLocationID = clubos_id.id
+                        clubLocationID = tracker.clubos.clubIDs[i].id
+                        console.log(clubLocationID)
                         break
                     }
                 }
