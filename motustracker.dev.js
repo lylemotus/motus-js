@@ -191,10 +191,10 @@ MotusTracker.prototype = {
         }
 
         // Set location for clubos if it's present in the document.pathname
-        // if (document.location.pathname.indexOf('location') && typeof(tracker.clubos) == 'object') {
-        //     var pathnames = document.location.pathname.split('/')
-        //     tracker.clubos.location = pathnames[pathnames.length - 1]
-        // }
+        if (document.location.pathname.indexOf('location') && typeof(tracker.clubos) == 'object') {
+            var pathnames = document.location.pathname.split('/')
+            tracker.clubos.location = pathnames[pathnames.length - 1]
+        }
 
         tracker.web = {
             origin   : window.location.origin,
@@ -469,7 +469,7 @@ MotusTracker.prototype = {
             if (typeof(tracker.clubos) == 'object' && tracker.clubos.location) {
                 var xhr = new XMLHttpRequest()
                 var clubLocationID = false
-                for (i = 0; tracker.clubos.clubIDs.length > i; i++) {
+                for (i = 0; tracker.clubos.clubIDs.length < i; i++) {
                     var clubos_id = tracker.clubos.clubIDs[i]
                     var location = clubos_id.location.toLowerCase()
                     var currentLocation = tracker.clubos.location.replace(/[^a-zA-Z0-9]/g, ' ').toLowerCase()
