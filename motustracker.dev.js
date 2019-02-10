@@ -455,12 +455,16 @@ MotusTracker.prototype = {
                 
                 if (r_element.id == 'location') {tracker.clubos.location = r_element.value};
                 if (r_element.name == 'location') {tracker.clubos.location = r_element.value};
+                if (document.location.pathname.indexOf('location')) {
+                    var pathnames = document.location.pathname.split('/')
+                    tracker.clubos.location = pathnames[pathnames.length - 1]
+                }
                 record.elements.push(element);
 
             }
 
             // ClubOS
-            if (typeof(tracker.clubos) == 'object') {
+            if (typeof(tracker.clubos) == 'object' && tracker.clubos.location) {
                 var xhr = new XMLHttpRequest()
                 var clubLocationID = false
                 for (i = 0; tracker.clubos.clubIDs.length > i; i++) {
