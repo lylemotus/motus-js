@@ -260,7 +260,7 @@ MotusTracker.prototype = {
         var tracker = this
 
         // Send data to Motus API /web
-        xhr.open('POST', tracker.endpoint + '/web/', false);
+        xhr.open('POST', tracker.endpoint + '/web/', true);
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         xhr.send(JSON.stringify(tracker));
 
@@ -478,7 +478,7 @@ MotusTracker.prototype = {
                 }
 
                 if (clubLocationID) {
-                    xhr.open('POST', tracker.endpoint + '/forward/clubos/' + clubLocationID, false)
+                    xhr.open('POST', tracker.endpoint + '/forward/clubos/' + clubLocationID, true)
                     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
 
                     clubos_data = Object.assign([], record.elements)
@@ -523,7 +523,7 @@ MotusTracker.prototype = {
         tracker.__closeSession__()
 
         // Send data to Motus API /web
-        xhr.open('POST', tracker.endpoint + '/web/', false);
+        xhr.open('POST', tracker.endpoint + '/web/', true);
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         xhr.send(JSON.stringify(tracker));
 
