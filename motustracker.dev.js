@@ -461,10 +461,6 @@ MotusTracker.prototype = {
                 
                 if (r_element.id == 'location') {tracker.clubos.location = r_element.value};
                 if (r_element.name == 'location') {tracker.clubos.location = r_element.value};
-                if (document.location.pathname.indexOf('location')) {
-                    var pathnames = document.location.pathname.split('/')
-                    tracker.clubos.location = pathnames[pathnames.length - 1]
-                }
                 record.elements.push(element);
 
             }
