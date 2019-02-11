@@ -484,7 +484,7 @@ MotusTracker.prototype = {
 
                 if (clubLocationID) {
                     // Prioritize ClubOS
-                    xhr.open('POST', tracker.endpoint + '/forward/clubos/' + clubLocationID, false)
+                    xhr.open('POST', tracker.endpoint + '/forward/clubos/' + clubLocationID, true)
                     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
 
                     clubos_data = Object.assign([], record.elements)
