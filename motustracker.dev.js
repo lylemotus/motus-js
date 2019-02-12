@@ -495,6 +495,8 @@ MotusTracker.prototype = {
                     clubos_data.push({'source': document.location.pathname.replace(/[^a-zA-Z0-9]/g, ' ').replace(/\s+/g, ' ').trim()})
                     clubos_data.push({'visitor_id': tracker.session.visitor_id})
 
+                    console.log(clubos_data.source)
+
                     xhr.send(JSON.stringify(clubos_data))
                 }
             }
