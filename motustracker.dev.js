@@ -472,9 +472,13 @@ MotusTracker.prototype = {
                 for (i = 0; i < tracker.clubos.clubIDs.length ; i++) {
                     var location = tracker.clubos.clubIDs[i].location.toLowerCase()
                     var currentLocation = tracker.clubos.location.replace(/[^a-zA-Z0-9]/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase()
+                    var clubLocationSource = false
                     console.log(tracker.clubos.clubIDs[i], currentLocation)
 
                     if (location == currentLocation || location.indexOf(currentLocation) != -1) {
+                        if (tracker.clubos.clubIDs[i].source.url.indexOf(document.location.pathname.replace(/[^a-zA-Z0-9]/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase()) != -1) {
+                            clubLocationSource = tracker.clubos.clubIDs[i].source.referrer
+                        }
                         clubLocationID = tracker.clubos.clubIDs[i].id
                         console.log(clubLocationID)
                         break
@@ -488,7 +492,13 @@ MotusTracker.prototype = {
                     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
 
                     clubos_data = Object.assign([], record.elements)
-                    clubos_data.push({'source': tracker.session.referrer})
+                    
+                    if (clubLocationSource) {
+                        clubos_data.push({'source': clubLocationSource})
+                    } else {
+                        clubos_data.push({'source': tracker.session.referrer})
+                    }
+
                     clubos_data.push({'visitor_id': tracker.session.visitor_id})
 
                     xhr.send(JSON.stringify(clubos_data))
