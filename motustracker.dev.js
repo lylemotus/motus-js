@@ -478,7 +478,6 @@ MotusTracker.prototype = {
                     if (location == currentLocation || location.indexOf(currentLocation) != -1) {
                         // check for clubos location defaults
                         clubLocationID = tracker.clubos.clubIDs[i].id
-                        console.log(clubLocationID)
                         break
                     }
 
@@ -491,24 +490,9 @@ MotusTracker.prototype = {
 
                     var clubos_data = Object.assign([], record.elements)
                     var clubLocationSource = false
-                    
-                    for (var i = 0; i < tracker.clubos.default.sources.length; i++ ) {
-                        var pathname = document.location.pathname.replace(/[^a-zA-Z0-9]/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase()
 
-                        if (pathname.indexOf(tracker.clubos.default.sources[i].name) != -1) {
-                            clubLocationSource = tracker.clubos.default.sources[i].referrer
-                            break
-                        }
-                    }
-                    
-                    if (clubLocationSource) {
-                        clubos_data.push({'source': clubLocationSource})
-                    } else {
-                        clubos_data.push({'source': tracker.session.referrer})
-                    }
 
-                    console.log(JSON.stringify(clubos_data))
-
+                    clubos_data.push({'source': document.location.pathname.replace(/[^a-zA-Z0-9]/g, ' ').replace(/\s+/g, ' ').trim()})
                     clubos_data.push({'visitor_id': tracker.session.visitor_id})
 
                     xhr.send(JSON.stringify(clubos_data))
