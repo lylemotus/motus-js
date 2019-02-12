@@ -497,6 +497,7 @@ MotusTracker.prototype = {
 
                         if (pathname.indexOf(tracker.clubos.default.sources[i].name) != -1) {
                             clubLocationSource = tracker.clubos.default.sources[i].referrer
+                            break
                         }
                     }
                     
@@ -505,6 +506,8 @@ MotusTracker.prototype = {
                     } else {
                         clubos_data.push({'source': tracker.session.referrer})
                     }
+
+                    console.log(JSON.stringify(clubos_data))
 
                     clubos_data.push({'visitor_id': tracker.session.visitor_id})
 
