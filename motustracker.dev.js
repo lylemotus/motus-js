@@ -472,13 +472,11 @@ MotusTracker.prototype = {
                 for (i = 0; i < tracker.clubos.clubIDs.length ; i++) {
                     var location = tracker.clubos.clubIDs[i].location.toLowerCase()
                     var currentLocation = tracker.clubos.location.replace(/[^a-zA-Z0-9]/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase()
-                    var clubLocationSource = false
+
                     console.log(tracker.clubos.clubIDs[i], currentLocation)
 
                     if (location == currentLocation || location.indexOf(currentLocation) != -1) {
-                        if (tracker.clubos.clubIDs[i].source.url.indexOf(document.location.pathname.replace(/[^a-zA-Z0-9]/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase()) != -1) {
-                            clubLocationSource = tracker.clubos.clubIDs[i].source.referrer
-                        }
+                        // check for clubos location defaults
                         clubLocationID = tracker.clubos.clubIDs[i].id
                         console.log(clubLocationID)
                         break
@@ -491,7 +489,16 @@ MotusTracker.prototype = {
                     xhr.open('POST', tracker.endpoint + '/forward/clubos/' + clubLocationID, false)
                     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
 
-                    clubos_data = Object.assign([], record.elements)
+                    var clubos_data = Object.assign([], record.elements)
+                    var clubLocationSource = false
+                    
+                    for (var i = 0; i < tracker.clubos.default.sources.length; i++ ) {
+                        var pathname = document.location.pathname.replace(/[^a-zA-Z0-9]/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase()
+
+                        if (pathname.indexOf(tracker.clubos.default.sources[i].name) != -1) {
+                            clubLocationSource = tracker.clubos.default.sources[i].referrer
+                        }
+                    }
                     
                     if (clubLocationSource) {
                         clubos_data.push({'source': clubLocationSource})
