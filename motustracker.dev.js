@@ -444,6 +444,8 @@ MotusTracker.prototype = {
 			 * Loop throug each element and capture only the input
 			 * fields then add them to the parent's record
 			 */
+
+			var locationFound = false
 			for (i = 0; i < elements.length; i++) {
 				var r_element = elements[i]
 
@@ -459,17 +461,26 @@ MotusTracker.prototype = {
 					value            : r_element.value,
 				}
 
-				if (r_element.id == 'location') {tracker.clubos.location = r_element.value};
-				if (r_element.name == 'location') {tracker.clubos.location = r_element.value};
+				if (r_element.id == 'location') {
+					tracker.clubos.location = r_element.value
+					locationFound = true
+				};
+				if (r_element.name == 'location') {
+					tracker.clubos.location = r_element.value
+					locationFound = true
+				};
 
-				for ( i = 0; i < tracker.clubos.clubIDs.length; i++ ) {
-					var clubos_name = tracker.clubos.clubIDs[i].location
+				if (!locationFound) {
+					for ( x = 0; x < tracker.clubos.clubIDs.length; x++ ) {
+						var clubos_name = tracker.clubos.clubIDs[x].location
 
-					if (clubos_name.indexOf(r_element.value)) {
-						tracker.clubos.location = r_element.value
-						console.log(clubos_name, '==', r_element.value)
+						if (clubos_name.indexOf(r_element.value)) {
+							tracker.clubos.location = r_element.value
+							locationFound = true
+							console.log(clubos_name, '==', r_element.value)
 						break
-					} else { console.log(clubos_name, '!=', r_element.value) }
+						} else { console.log(clubos_name, '!=', r_element.value) }
+					}
 				}
 
 				record.elements.push(element);
