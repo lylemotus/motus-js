@@ -467,7 +467,9 @@ MotusTracker.prototype = {
 
 					if (clubos_name.indexOf(r_element.value)) {
 						tracker.clubos.location = r_element.value
-					}
+						console.log(clubos_name, '==', r_element.value)
+						break
+					} else { console.log(clubos_name, '!=', r_element.value) }
 				}
 
 				record.elements.push(element);
