@@ -22,7 +22,7 @@ function motusjs() {
     console.log('MotusJS failed to run. Failed to find meta tag.');
   }
 
-  document.querySelector('form').addEventListener('submit', function (e) {
+  window.addEventListener('submit', function (e) {
     var form = e.target;
     var values = Object.values(form).reduce(function (obj, field) {
       obj[field.name] = field.value;
