@@ -1,12 +1,19 @@
-function post (body, endpoint) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', endpoint, true);
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    xhr.send(JSON.stringify(body));
+var base_api = "https://motus-express.herokuapp.com"
+
+function post (path, values) {
+    fetch(`${base_api}/${path}`, {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: values,
+
+    })
 }
 
 function motusjs () {
-    const userid = document.querySelector('meta[name="motustracker"]').content;
+    var userid = document.querySelector('meta[name="motustracker"]').content;
 
     if (userid) {
         console.log('MotusJS initialized')
@@ -14,14 +21,16 @@ function motusjs () {
         console.log('MotusJS failed to run. Failed to find meta tag.')
     }
 
-    document.querySelector('form.mt-clubos').addEventListener('submit', (e) => {
-        const form = e.target
-        const values = Object.values(form).reduce(
+    document.querySelector('form.mt-clubos').addEventListener('submit', function (e) {
+        var form = e.target
+        var values = Object.values(form).reduce(
             (obj, field) => {
                 obj[field.name] = field.value
                 return obj
             }, {}
         )
+
+        post(`clubos/${userid}`, JSON.stringify(values))
     });
 }
 

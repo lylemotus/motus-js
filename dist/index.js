@@ -1,10 +1,16 @@
 "use strict";
 
-function post(body, endpoint) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', endpoint, true);
-  xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-  xhr.send(JSON.stringify(body));
+var base_api = "https://motus-express.herokuapp.com";
+
+function post(path, values) {
+  fetch("".concat(base_api, "/").concat(path), {
+    method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: values
+  });
 }
 
 function motusjs() {
@@ -22,6 +28,7 @@ function motusjs() {
       obj[field.name] = field.value;
       return obj;
     }, {});
+    post("clubos/".concat(userid), JSON.stringify(values));
   });
 }
 
