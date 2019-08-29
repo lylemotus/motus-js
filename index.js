@@ -30,6 +30,8 @@ function motusjs () {
             }, {}
         )
 
+        values.path = window.location.pathname
+
         post(`clubos/${userid}`, JSON.stringify(values))
     });
 }
