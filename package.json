@@ -1,37 +1,45 @@
 {
-  "name": "motustrackerjs",
+  "name": "motustracker-js",
   "version": "1.0.0",
-  "description": "Web visitor tracker",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kriscarilloxyz/motus-tracker.git"
+    "url": "git+https://github.com/kriscarilloxyz/motus-js.git"
   },
-  "keywords": [
-    "tracker",
-    "analytics"
-  ],
   "author": "Kris Carillo <kriscarilloxyz@gmail.com>",
-  "license": "SEE LICENSE IN <LICENSE.md>",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kriscarilloxyz/motus-tracker/issues"
+    "url": "https://github.com/kriscarilloxyz/motus-js/issues"
   },
-  "homepage": "https://github.com/kriscarilloxyz/motus-tracker#readme",
-  "dependencies": {
-    "gulp": "^4.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-uglify": "^3.0.1",
-    "js-cookie": "^2.2.0"
-  },
+  "homepage": "https://github.com/kriscarilloxyz/motus-js#readme",
   "devDependencies": {
-    "gulp-include": "^2.3.1",
-    "gulp-rename": "^1.4.0",
-    "gulp-watch": "^5.0.1",
-    "gulp-webpack": "^1.5.0",
-    "install": "^0.12.2",
-    "npm": "^6.7.0"
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-better-rollup": "^4.0.1",
+    "gulp-polyfiller": "0.0.1",
+    "rollup": "^1.20.3",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.5.5",
+    "axios": "^0.19.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-polyfill": "^6.26.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-merge": "^0.1.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-strip-comments": "^2.5.2",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1"
   }
 }

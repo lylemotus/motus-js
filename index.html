@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="motustracker" content="JJdbxGpRVGXoQtfCRYajqA6j0br1">
+    <title>Motus JS Test</title>
+</head>
+
+<body>
+    <form class="mt-clubos" onsubmit="return mySubmitFunction(event)">
+        <label for="firstname">First Name</label>
+        <input id="firstname" name="firstname" type="text" value="test_firstname">
+
+        <label for="lastname">Last Name</label>
+        <input id="lastname" name="lastname" type="text" value="test_lastname">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="test@gmail.com">
+
+        <label for="phone">Phone</label>
+        <input type="number" id="phone" name="phone" value="09999999999">
+
+        <label for="club">Club ID</label>
+
+        <select name="club" id="club">
+            <option value="Allen">Allen</option>
+            <option value="Bedford">Bedford</option>
+            <option value="The Colony">The Colony</option>
+        </select>
+        <button id="submit" type="submit">Submit</button>
+    </form>
+</body>
+<script>
+    document.querySelector('#submit').click()
+    function mySubmitFunction(e) {
+        e.preventDefault();
+    }
+</script>
+<script src="dist/index.js"></script>
+
+</html>
