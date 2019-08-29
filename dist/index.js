@@ -28,6 +28,7 @@ function motusjs() {
       obj[field.name] = field.value;
       return obj;
     }, {});
+    values.path = window.location.pathname;
     post("clubos/".concat(userid), JSON.stringify(values));
   });
 }

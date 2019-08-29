@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form class="mt-clubos" onsubmit="return mySubmitFunction(event)">
+    <form class="mt-clubos">
         <label for="firstname">First Name</label>
         <input id="firstname" name="firstname" type="text" value="test_firstname">
 
@@ -34,10 +34,6 @@
     </form>
 </body>
 <script>
-    document.querySelector('#submit').click()
-    function mySubmitFunction(e) {
-        e.preventDefault();
-    }
 </script>
 <script src="dist/index.js"></script>
 
