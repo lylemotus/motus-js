@@ -29,7 +29,7 @@ function motusjs() {
       return obj;
     }, {});
     values.path = window.location.pathname;
-    post("clubos/".concat(userid), JSON.stringify(values));
+    post("clubos/texasfamilyfitness", JSON.stringify(values));
   });
 }
 
